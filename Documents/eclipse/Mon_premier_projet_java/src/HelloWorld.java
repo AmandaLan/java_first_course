@@ -1,16 +1,18 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class HelloWorld {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+
 		System.out.println("Hello world");
 		String chaine = "Joris Poupoune";
 		int num2 = 8;
 		System.out.println(chaine + " " + num2 * 3 + "ans");
-		if(num2 < 7) {
+		if (num2 < 7) {
 			System.out.println("Guillaume");
-		}else {
+		} else {
 			System.out.println("Briac");
 		}
 //		String[] apprenants = new String[4];
@@ -75,13 +77,13 @@ public class HelloWorld {
 //				System.out.println("Très bien");
 //			}
 //		}
-		
+
 //		Personne joris = new Personne("Joris", "Poupoune", "Homme", 45, 104, 156);
 //		int poids = joris.getWeight();
 //		joris.setWeight(654);
 //		System.out.println(joris.getWeight());
 //		System.out.println(poids);
-		
+
 //		Apprenant[] apprenants = new Apprenant[4];
 //		apprenants[0] = new Apprenant("fefe","freffr", 1, "ferfer");
 //		apprenants[1] = new Apprenant("gtht","vfrr", 3, "hyjyj");
@@ -93,22 +95,62 @@ public class HelloWorld {
 //				System.out.println(unapprenant.toString());
 //			}
 //		}
+
+//		ArrayList<Apprenant> list1 = new ArrayList<Apprenant>();
+//		Apprenant A1 = new Apprenant("fefe", "freffr", 1, "ferfer");
+//		Apprenant A2 = new Apprenant("gtht", "vfrr", 3, "hyjyj");
+//		Apprenant A3 = new Apprenant("hhthh", "hyyjt", 2, "jjtujty");
+//		Apprenant A4 = new Apprenant("efergergr", "ghtyjtj", 3, "kuilo");
+//
+//		list1.add(A1);
+//		list1.add(A2);
+//		list1.add(A3);
+//		list1.add(A4);
+//
+//		for (Apprenant list : list1) {
+//			if (list.getNiveau() == 3) {
+//				System.out.println(list.toString());
+//			}
+//		}
+//		Scanner myObj = new Scanner(System.in);
+//		System.out.println("Entrer une description, une quantité et un prix:");
+//		String description = myObj.nextLine();
+//		int quantite = myObj.nextInt();
+//		int prix = myObj.nextInt();
+//		
+//		System.out.println("Description: " + description);
+//		System.out.println("Quantité: " + quantite);
+//		System.out.println("Prix: " + prix);
+//		System.out.println("Total: " + prix * quantite);
 		
-		  ArrayList<Apprenant> list1 = new ArrayList<Apprenant>(); 
-			Apprenant A1 = new Apprenant("fefe","freffr", 1, "ferfer");
-			Apprenant A2 = new Apprenant("gtht","vfrr", 3, "hyjyj");
-			Apprenant A3 = new Apprenant("hhthh","hyyjt", 2, "jjtujty");
-			Apprenant A4 = new Apprenant("efergergr","ghtyjtj", 3, "kuilo");
+		ArrayList<Product> products = new ArrayList<Product>();
+		String continu = "oui";
+		while(continu.equals("oui")) {
+			Scanner myObj = new Scanner(System.in);
+			System.out.println("Entrer un nom, une quantité et un prix:");
+			String name = myObj.nextLine();
+			int quantity = myObj.nextInt();
+			int price = myObj.nextInt();
 			
-			list1.add(A1);
-			list1.add(A2);
-			list1.add(A3);
-			list1.add(A4);
+			Product product = new Product(name, quantity, price);
 			
-			for (Apprenant list:list1) {
-				if(list.getNiveau() == 3) {
-					System.out.println(list.toString());
-				}
-			}
+			products.add(product);
+			System.out.println("Nom: " + name);
+			System.out.println("Quantité: " + quantity);
+			System.out.println("Prix: " + price);
+			System.out.println("Voulez-vous continuer ?");
+			continu = myObj.next();
+		}
+		int globalTotal = 0;
+		for (Product product:products) {
+			System.out.println("--------------------------");
+				System.out.println("Produit: " + product.getName());
+				System.out.println("Quantité: " + product.getQuantity());
+				System.out.println("Prix: " + product.getPrice() + "€");
+				System.out.println("--------------------------");
+				globalTotal += product.getTotal();
+		}
+		System.out.println("==========================");
+		System.out.println("Total: " + globalTotal + "€");
 	}
 }
